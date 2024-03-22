@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        
+        font-family: Poppins,sans-serif;
+    }
+    #main{
+        font-family: Arial, sans-serif;
+            
+             background-size: cover;
+            background-position: center;
+            display: flex;
+            gap: 100px;
+            align-items: center;
+            justify-content: center;
+    }
+    #main div{
+        width: 800px;
+        /* border: solid; */
+
+    }
+     
+        h2 {
+            color: #ffffff;
+        }
+
+        h3 {
+            color: #f5f5f5;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            height: auto;
+              border-radius: 12px;
+              border: 2px solid #0ddce7;
+              box-shadow: 0 4px 6px rgba(0,0,0, 0.1);
+        }
+        img:hover{
+
+              transform: scale(1.05);
+              border-color: #b711fe;
+              transition: transform 1s ease;
+            }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    
+</style>
+<body>
+   <center><div id="main">
+
+   </div>
+   </center>
+    <script>
+
+
+let seemorePage=JSON.parse(localStorage.getItem("seemore"))
+
+
+console.log(seemorePage)
+
+let title=document.createElement("h2")
+title.innerHTML=`${seemorePage.title}`
+
+let image=document.createElement("img")
+image.setAttribute("src",seemorePage.images[2][1])
+
+
+
+
+let direcor=document.createElement("h2")
+direcor.innerHTML=`Director :${seemorePage.Director}`
+
+let writer=document.createElement("h2")
+writer.innerHTML=`Writers :${seemorePage.Writers[0]} and ${seemorePage.Writers[1]}`
+
+
+let stars=document.createElement("h2")
+stars.innerHTML=`Stars :${seemorePage.Stars[0]} , ${seemorePage.Stars[1]} and ${seemorePage.Stars[2]}`
+
+let gener=document.createElement("h2")
+gener.innerHTML=`Genre :${seemorePage.genre}`
+
+let rank=document.createElement("h2")
+rank.innerHTML=`Rank :${seemorePage.rank}`
+
+let rating=document.createElement("h2")
+rating.innerHTML=`Rating :${seemorePage.rating}`
+
+let description=document.createElement("h3")
+description.innerHTML=`Description :${seemorePage.description}`
+
+
+let imdbid=document.createElement("h2")
+imdbid.innerHTML=`imdbid :${seemorePage.imdbid}`
+
+    
+        var link = document.createElement("a");
+
+        
+        link.href = seemorePage.link;
+        link.textContent = `link:" Watch Movie Trailer";`
+        link.setAttribute("target", "_blank");
+
+
+
+let year=document.createElement("h2")
+year.innerHTML=`Year : ${seemorePage.year}`
+
+
+let backButton=document.createElement("button")
+backButton.innerHTML="Go Back";
+
+backButton.addEventListener("click",()=>{
+    window.location.href="./index.html"
+})
+
+
+
+
+let divv=document.getElementById("main")
+let dd=document.createElement("div")
+dd.append(title,rank,year,direcor,writer,stars,gener,rating,description,link,imdbid,backButton)
+divv.append(image,dd)
+divv.style.backgroundImage = `url('${seemorePage.images[2][1]}')`;
+
+    </script>
+</body>
+</html>
